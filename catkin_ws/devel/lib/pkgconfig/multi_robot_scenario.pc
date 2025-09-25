@@ -1,0 +1,8 @@
+prefix=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel
+
+Name: multi_robot_scenario
+Description: Description of multi_robot_scenario
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

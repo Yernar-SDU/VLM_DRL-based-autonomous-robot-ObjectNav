@@ -43,4 +43,7 @@
     <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
   </group>
 
+
+  <remap from="/cmd_vel" to="/r1/cmd_vel"/>
+  
 </launch>

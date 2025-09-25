@@ -1,0 +1,11 @@
+file(REMOVE_RECURSE
+  "/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel_isolated/realsense_gazebo_plugin/lib/librealsense_gazebo_plugin.pdb"
+  "/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel_isolated/realsense_gazebo_plugin/lib/librealsense_gazebo_plugin.so"
+  "CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o"
+  "CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/realsense_gazebo_plugin.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
