@@ -1,8 +1,0 @@
-prefix=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel_isolated/realsense_gazebo_plugin
-
-Name: realsense_gazebo_plugin
-Description: Description of realsense_gazebo_plugin
-Version: 1.1.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp gazebo_ros image_transport camera_info_manager sensor_msgs

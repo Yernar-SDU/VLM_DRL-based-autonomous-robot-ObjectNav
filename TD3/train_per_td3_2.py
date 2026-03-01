@@ -28,8 +28,8 @@ class GazeboGymWrapper(gym.Env):
         self.env = GazeboEnv()
         # Observation: image is (1, 64, 64), scalars is a 7D vector.
         self.observation_space = spaces.Dict({
-            "image": spaces.Box(low=0, high=1, shape=(1, 64, 64), dtype=np.float32),
-            "scalars": spaces.Box(low=-np.inf, high=np.inf, shape=(7,), dtype=np.float32)
+            # "image": spaces.Box(low=0, high=1, shape=(1, 64, 64), dtype=np.float32),
+            "scalars": spaces.Box(low=-np.inf, high=np.inf, shape=(26,), dtype=np.float32)
         })
         # Define the action space: e.g. linear [0,1] and angular [-1,1]
         self.action_space = spaces.Box(low=np.array([0, -1.0]),
@@ -83,7 +83,7 @@ class CombinedExtractor(BaseFeaturesExtractor):
         # Combine CNN and MLP
         combined_dim = cnn_output_dim + 64  # e.g., 64 + 64 = 128
         self.fc = nn.Sequential(
-            nn.Linear(combined_dim, 128),
+            nn.Linear(64, 128),
             nn.Linear(128, features_dim),
             nn.ReLU()
         )
@@ -97,6 +97,7 @@ class CombinedExtractor(BaseFeaturesExtractor):
         mlp_out = self.mlp(scalars)           # shape (B, 64)
         combined = torch.cat([cnn_out, mlp_out], dim=1)  # shape (B, 128)
         return self.fc(combined)              # shape (B, features_dim)
+    
 class SaveEveryNStepsCallback(BaseCallback):
     def __init__(self, save_freq, save_path, verbose=0):
         super().__init__(verbose)
@@ -125,48 +126,48 @@ if __name__ == "__main__":
     pub = rospy.Publisher("/r1/cmd_vel", Twist, queue_size=1)
     rate = rospy.Rate(10)
 
-    twist = Twist()
-    twist.linear.x = 0.2   # move forward slowly
-    twist.angular.z = 0.2  # turn slightly
+    # twist = Twist()
+    # twist.linear.x = 0.2   # move forward slowly
+    # twist.angular.z = 0.2  # turn slightly
 
-    while not rospy.is_shutdown():
-        pub.publish(twist)
-        rate.sleep()
+    # while not rospy.is_shutdown():
+    #     pub.publish(twist)
+    #     rate.sleep()
 
     # Create an action noise object for exploration.
-    # n_actions = env.action_space.shape[-1]
+    n_actions = env.action_space.shape[-1]
     # # Increase sigma to increase exploration noise.
-    # action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.8 * np.ones(n_actions))
+    action_noise = NormalActionNoise(mean=np.zeros(n_actions), sigma=0.8 * np.ones(n_actions))
     
     # # Example of updated hyperparameters for TD3
-    # model = TD3(
-    #     "MultiInputPolicy",
-    #     env,
-    #     policy_kwargs=policy_kwargs,
-    #     learning_rate=1e-4,           # smaller LR can help stabilize
-    #     batch_size=256,               # bigger batch for image-based input
-    #     tau=0.005,                    # polyak update
-    #     policy_delay=2,               # update policy every 2 critic steps
-    #     target_policy_noise=0.2,      # smoothing noise for target policy
-    #     target_noise_clip=0.5,
-    #     buffer_size=1_000_000,          # large replay buffer
-    #     action_noise=action_noise,    # add exploration noise here
-    #     verbose=1,
-    #     tensorboard_log="./runs" 
-    # )
+    model = TD3(
+        "MultiInputPolicy",
+        env,
+        policy_kwargs=policy_kwargs,
+        learning_rate=1e-4,           # smaller LR can help stabilize
+        batch_size=256,               # bigger batch for image-based input
+        tau=0.005,                    # polyak update
+        policy_delay=2,               # update policy every 2 critic steps
+        target_policy_noise=0.2,      # smoothing noise for target policy
+        target_noise_clip=0.5,
+        buffer_size=1_000_000,          # large replay buffer
+        action_noise=action_noise,    # add exploration noise here
+        verbose=1,
+        tensorboard_log="./runs" 
+    )
     # # Create the callback
-    # save_callback = SaveEveryNStepsCallback(
-    #     save_freq=50000,               # every 1000 steps
-    #     save_path="./checkpoints",    # folder to save models
-    #     verbose=1,
-    # )
+    save_callback = SaveEveryNStepsCallback(
+        save_freq=50000,               # every 1000 steps
+        save_path="./checkpoints",    # folder to save models
+        verbose=1,
+    )
 
     # # Train with callback
-    # model.learn(total_timesteps=int(4e5), callback=save_callback, tb_log_name="turtle_obs_1")
+    model.learn(total_timesteps=int(1e6), callback=save_callback, tb_log_name="turtle_obs_2")
 
 
     # # Save the trained model
-    # model.save("td3_gazebo_custom_policy")
+    model.save("td3_gazebo_custom_policy_multiroom")
     print("Training complete and model saved!")
 
 

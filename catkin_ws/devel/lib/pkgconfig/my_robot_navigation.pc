@@ -1,8 +1,0 @@
-prefix=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel
-
-Name: my_robot_navigation
-Description: Description of my_robot_navigation
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

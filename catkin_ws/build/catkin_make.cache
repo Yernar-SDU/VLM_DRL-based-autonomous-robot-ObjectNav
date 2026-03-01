@@ -1,2 +1,0 @@
-multi_robot_scenario:my_robot_navigation:realsense2_description:realsense_gazebo_plugin:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
--DCATKIN_DEVEL_PREFIX=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/install -G Unix Makefiles

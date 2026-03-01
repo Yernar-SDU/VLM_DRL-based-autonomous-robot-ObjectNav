@@ -25,15 +25,18 @@
         <rightJoint>right_hub_joint</rightJoint>
         <wheelSeparation>0.3</wheelSeparation>
         <wheelDiameter>0.18</wheelDiameter>
-        <wheelTorque>40</wheelTorque> 
+        <wheelTorque>20</wheelTorque> 
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
         <!-- # settings to robot -->
-        <wheelAcceleration>2.2</wheelAcceleration> 
+        <wheelAcceleration>1.8</wheelAcceleration> 
         <commandTopic>cmd_vel</commandTopic>
         <odometryTopic>odom</odometryTopic>
         <odometryFrame>odom</odometryFrame>
         <odometrySource>world</odometrySource>
         <robotBaseFrame>base_link</robotBaseFrame>
         <updateRate>50</updateRate>
+        <publishOdomTF>true</publishOdomTF>
       </plugin>
     </gazebo>
 

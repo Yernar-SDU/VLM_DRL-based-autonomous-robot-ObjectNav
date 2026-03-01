@@ -45,5 +45,36 @@
 
 
   <remap from="/cmd_vel" to="/r1/cmd_vel"/>
-  
+  <!-- TF: map -> odom -> base_link -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_odom" 
+        args="0 0 0 0 0 0 map odom 100" />
+  <node pkg="tf" type="static_transform_publisher" name="odom_to_base_link" 
+        args="0 0 0 0 0 0 odom base_link 100" /> -->
+
+  <!-- move_base with correct frame names -->
+  <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="global_costmap/global_frame" value="map"/>
+    <param name="global_costmap/robot_base_frame" value="base_link"/>
+    <param name="local_costmap/global_frame" value="odom"/>
+    <param name="local_costmap/robot_base_frame" value="base_link"/>
+    
+    <param name="global_costmap/static_map" value="false"/>
+    <param name="global_costmap/rolling_window" value="true"/>
+    <param name="global_costmap/width" value="30.0"/>
+    <param name="global_costmap/height" value="30.0"/>
+    
+    <param name="global_costmap/obstacle_layer/observation_sources" value="laser"/>
+    <param name="global_costmap/obstacle_layer/laser/topic" value="/r1/front_laser/scan"/>
+    <param name="global_costmap/obstacle_layer/laser/data_type" value="LaserScan"/>
+    <param name="global_costmap/obstacle_layer/laser/sensor_frame" value="front_laser"/>
+    
+    <param name="local_costmap/obstacle_layer/observation_sources" value="laser"/>
+    <param name="local_costmap/obstacle_layer/laser/topic" value="/r1/front_laser/scan"/>
+    <param name="local_costmap/obstacle_layer/laser/data_type" value="LaserScan"/>
+    <param name="local_costmap/obstacle_layer/laser/sensor_frame" value="front_laser"/>
+    
+    <remap from="cmd_vel" to="/r1/cmd_vel"/>
+    <remap from="odom" to="/r1/odom"/>
+  </node> -->
+
 </launch>
