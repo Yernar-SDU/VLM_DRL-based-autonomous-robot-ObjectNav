@@ -57,17 +57,22 @@ API docs available at: http://127.0.0.1:8000/docs
 
 ### Terminal 2 — Run the Explorer Robot
 
-Set up the ROS environment:
+Set up the ROS environment (replace `<your_path>` with the absolute path where you cloned this repo):
 
 ```bash
+export PROJECT_ROOT=<your_path>/DRL-robot-navigation
+
 export ROS_HOSTNAME=localhost
 export ROS_MASTER_URI=http://localhost:11311
 export ROS_PORT_SIM=11311
-export GAZEBO_RESOURCE_PATH=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/src/multi_robot_scenario/launch
+export GAZEBO_RESOURCE_PATH=$PROJECT_ROOT/catkin_ws/src/multi_robot_scenario/launch
 source ~/.bashrc
-source /home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/devel_isolated/setup.bash
-export GAZEBO_RESOURCE_PATH=/home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/TD3:$GAZEBO_RESOURCE_PATH
+source $PROJECT_ROOT/catkin_ws/devel_isolated/setup.bash
+export GAZEBO_RESOURCE_PATH=$PROJECT_ROOT/TD3:$GAZEBO_RESOURCE_PATH
 ```
+
+> **Example:** if you cloned into `/home/john/projects`, then set:
+> `export PROJECT_ROOT=/home/john/projects/DRL-robot-navigation`
 
 Then activate the environment and launch the explorer:
 
