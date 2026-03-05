@@ -10,7 +10,11 @@ vlmenv/
 venv/
 env/
 
-# ── ROS build artifacts ──────────────────────────────────────────────change?
+# ── ROS build artifacts ────────────────────────────────────────────────────────
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/build_isolated/
+catkin_ws/devel_isolated/
 
 # ── Jupyter ────────────────────────────────────────────────────────────────────
 .ipynb_checkpoints/
