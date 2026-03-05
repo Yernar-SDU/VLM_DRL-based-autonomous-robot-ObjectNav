@@ -1,0 +1,6 @@
+# CMake generated Testfile for 
+# Source directory: /home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/src/realsense_gazebo_plugin
+# Build directory: /home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/build/realsense_gazebo_plugin
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.

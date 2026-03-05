@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ai-lab/Downloads/DRL-robot-navigation_segway_imu_should_be_calibrated/DRL-robot-navigation/catkin_ws/install_isolated/setup.sh
