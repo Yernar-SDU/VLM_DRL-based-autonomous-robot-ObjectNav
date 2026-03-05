@@ -3,7 +3,7 @@
 fastapi==0.123.9
 uvicorn[standard]==0.38.0
 pillow==10.4.0
-moondream==0.2.0
+# NOTE: Moondream is NOT listed here — install it separately, see README.
 
 # ── PyTorch + HuggingFace (VLM inference & training) ─────────────────────────
 # For CUDA 12.x: pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu124
@@ -25,6 +25,7 @@ pandas
 squaternion
 pynput
 python-multipart
+
 # ── Reinforcement learning & training ─────────────────────────────────────────
 gymnasium
 stable-baselines3[extra]

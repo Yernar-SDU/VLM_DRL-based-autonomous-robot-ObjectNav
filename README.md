@@ -15,7 +15,13 @@ Autonomous robot exploration using frontier-based navigation and Vision-Language
 
 ## Installation
 
-All Python dependencies (including Moondream) are listed in `TD3/requirements.txt`.
+### 1. Install Moondream
+
+Moondream is **not** included in `requirements.txt`. Follow the official setup guide for your preferred backend:
+
+> **https://docs.moondream.ai/transformers/**
+
+### 2. Install remaining dependencies
 
 ```bash
 cd TD3/
@@ -30,8 +36,7 @@ source vlmenv/bin/activate
 pip install -r requirements.txt
 ```
 
-> **Note — PyTorch + CUDA:** The `requirements.txt` installs CPU-build PyTorch by default.
-> For GPU acceleration (strongly recommended for Moondream), install the CUDA build instead:
+> **Note — PyTorch + CUDA:** For GPU acceleration (strongly recommended for Moondream), install the CUDA build before running the command above:
 >
 > ```bash
 > pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu124
