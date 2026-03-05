@@ -65,7 +65,7 @@ API docs available at: http://127.0.0.1:8000/docs
 Set up the ROS environment (replace `<your_path>` with the absolute path where you cloned this repo):
 
 ```bash
-export PROJECT_ROOT=<your_path>/DRL-robot-navigation
+export PROJECT_ROOT=<your_path>/VLM_DRL-based-autonomous-robot-ObjectNav
 
 export ROS_HOSTNAME=localhost
 export ROS_MASTER_URI=http://localhost:11311
